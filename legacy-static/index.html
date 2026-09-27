@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Full-Stack & AI Builder | คอร์สเรียนออนไลน์สร้างเว็บและแอปอัจฉริยะจากศูนย์สู่มืออาชีพ</title>
+  <meta name="description" content="ยกระดับทักษะ พัฒนาเว็บไซต์ & สร้าง AI Application จากศูนย์ สู่มืออาชีพใน 8 สัปดาห์ ด้วยธีมขาวมินิมอล เรียนรู้ผ่านการลงมือทำจริง 6 โปรเจกต์">
+
+  <!-- Google Fonts: Prompt (Thai) & Plus Jakarta Sans (Latin/Numbers) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN for modern utilities -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'Plus Jakarta Sans', 'sans-serif'],
+            en: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+              950: '#09090b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles for Minimal White Theme -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-white text-zinc-900 antialiased selection:bg-zinc-900 selection:text-white">
+
+  <!-- =========================================================================
+       1. TOP URGENCY ANNOUNCEMENT BAR
+       ========================================================================= -->
+  <aside class="bg-zinc-950 text-white text-xs sm:text-sm py-2.5 px-4 sticky top-0 z-50 transition-all border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-500 text-zinc-950 uppercase tracking-wide">Early Bird</span>
+        <span class="text-zinc-300">เปิดรับรุ่นที่ 8 จำกัดเพียง 50 ท่านแรก (ลดทันที 40%)</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-zinc-400 hidden md:inline">เหลือเวลาอีกเพียง:</span>
+        <div class="inline-flex items-center gap-1.5 font-mono font-semibold bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800 text-emerald-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"></circle><polyline points="12 6 12 12 16 14" stroke-width="2"></polyline></svg>
+          <span class="countdown-display">00:00:00</span>
+        </div>
+        <button data-open-enroll class="underline hover:text-emerald-400 font-medium text-xs ml-1 transition-colors">รับสิทธิ์ด่วน &rarr;</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. STICKY GLASS NAVIGATION BAR
+       ========================================================================= -->
+  <header class="glass-header sticky top-[41px] z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] min-h-[72px] flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 group flex-shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-zinc-950 text-white flex items-center justify-center font-black text-lg tracking-tighter shadow-sm group-hover:scale-105 transition-transform">
+          K
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg tracking-tight text-zinc-950 font-en leading-none">KNOWVA<span class="text-emerald-500">.</span></span>
+          <span class="text-[10px] text-zinc-400 font-medium tracking-wider uppercase leading-none mt-1">Academy</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav id="desktopNav" class="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3.5 text-xs xl:text-sm font-medium text-zinc-600">
+        <a href="#why-us" class="nav-link">ทำไมต้องคอร์สนี้</a>
+        <a href="#curriculum" class="nav-link">เนื้อหาหลักสูตร</a>
+        <a href="#projects" class="nav-link">โปรเจกต์จริง</a>
+        <a href="#instructor" class="nav-link">ผู้สอน</a>
+        <a href="#reviews" class="nav-link">รีวิวผู้เรียน</a>
+        <a href="#pricing" class="nav-link">แพ็กเกจราคา</a>
+        <a href="#faq" class="nav-link">คำถามที่พบบ่อย</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center gap-2 xl:gap-3 flex-shrink-0">
+        <button data-open-preview class="btn btn-secondary text-xs sm:text-sm py-2 px-3 xl:px-3.5 hidden xl:inline-flex whitespace-nowrap">
+          <svg class="w-4 h-4 text-zinc-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+          ทดลองเรียนฟรี
+        </button>
+
+        <!-- Guest State: Login Button (Beside สมัครเรียน) -->
+        <button id="authLoginBtn" data-open-login class="btn btn-secondary text-xs sm:text-sm py-2 px-3.5 xl:px-4 hover:border-zinc-400 whitespace-nowrap">
+          <svg class="w-4 h-4 text-zinc-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+          </svg>
+          <span>เข้าสู่ระบบ</span>
+        </button>
+
+        <!-- Logged-in State: User Profile Dropdown -->
+        <div id="userProfileNav" class="hidden relative flex-shrink-0">
+          <button id="userDropdownTrigger" type="button" class="flex items-center gap-2 py-1.5 px-3 rounded-full bg-zinc-100 hover:bg-zinc-200/80 border border-zinc-200 transition-all text-xs font-semibold text-zinc-800 whitespace-nowrap">
+            <span class="w-6 h-6 rounded-full bg-zinc-950 text-white flex items-center justify-center font-bold text-xs" id="userAvatarText">U</span>
+            <span id="userNameNav" class="max-w-[100px] truncate">คุณผู้เรียน</span>
+            <svg class="w-3.5 h-3.5 text-zinc-500 transition-transform" id="userDropdownChevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <!-- User Dropdown Menu -->
+          <div id="userDropdownMenu" class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-zinc-200 py-1.5 z-50 text-xs">
+            <div class="px-3.5 py-2.5 border-b border-zinc-100">
+              <div class="flex items-center gap-1.5 mb-1">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600">เข้าสู่ระบบแล้ว</span>
+              </div>
+              <p class="font-bold text-zinc-900 truncate" id="dropdownUserFullName">คุณผู้เรียน</p>
+              <p class="text-[11px] text-zinc-400 truncate font-mono" id="dropdownUserEmail">student@email.com</p>
+            </div>
+            <a href="#pricing" class="block px-3.5 py-2 text-zinc-700 hover:bg-zinc-50">ดูแพ็กเกจคอร์สเรียน</a>
+            <button id="logoutBtn" type="button" class="w-full text-left px-3.5 py-2 text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+              ออกจากระบบ
+            </button>
+          </div>
+        </div>
+
+        <button data-open-enroll class="btn btn-primary text-xs sm:text-sm py-2 px-4 xl:px-5 shadow-sm whitespace-nowrap">
+          สมัครเรียน
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle Menu" class="lg:hidden p-2 text-zinc-700 hover:text-zinc-950 rounded-lg hover:bg-zinc-100 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-zinc-100 bg-white/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-2">
+      <a href="#why-us" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">ทำไมต้องคอร์สนี้</a>
+      <a href="#curriculum" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">เนื้อหาหลักสูตร</a>
+      <a href="#projects" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">โปรเจกต์จริง</a>
+      <a href="#instructor" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">ผู้สอน</a>
+      <a href="#reviews" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">รีวิวผู้เรียน</a>
+      <a href="#pricing" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">แพ็กเกจราคา</a>
+      <a href="#faq" class="nav-link-mobile block text-zinc-700 py-2 px-3 rounded-lg font-medium hover:text-zinc-950 hover:bg-zinc-100 transition-colors">คำถามที่พบบ่อย</a>
+      <div class="pt-3 flex flex-col gap-2">
+        <button data-open-preview class="btn btn-secondary w-full justify-center">ทดลองเรียนฟรี</button>
+        
+        <!-- Mobile Auth State -->
+        <div id="mobileAuthGuest" class="flex flex-col gap-2">
+          <button data-open-login class="btn btn-secondary w-full justify-center gap-2">
+            <svg class="w-4 h-4 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+            </svg>
+            เข้าสู่ระบบ
+          </button>
+        </div>
+
+        <div id="mobileAuthUser" class="hidden flex flex-col gap-2 p-3 bg-zinc-50 rounded-xl border border-zinc-200">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-full bg-zinc-950 text-white flex items-center justify-center font-bold text-xs" id="mobileUserAvatar">U</span>
+              <div>
+                <p class="text-xs font-bold text-zinc-900" id="mobileUserName">คุณผู้เรียน</p>
+                <p class="text-[10px] text-zinc-400" id="mobileUserEmail">user@email.com</p>
+              </div>
+            </div>
+            <button id="mobileLogoutBtn" class="text-xs text-red-600 font-medium px-2 py-1 rounded hover:bg-red-50">ออกจากระบบ</button>
+          </div>
+        </div>
+
+        <button data-open-enroll class="btn btn-primary w-full justify-center">สมัครเรียนทันที</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. HERO SECTION (Minimal, Spacious & High Impact)
+       ========================================================================= -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <!-- Subtle Background Glow / Gradients -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-zinc-50 via-white to-transparent pointer-events-none -z-10"></div>
+    <div class="absolute -top-24 right-1/4 w-80 h-80 bg-zinc-100 rounded-full blur-3xl opacity-60 pointer-events-none -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Status Badge Pill -->
+      <div class="inline-flex mb-6">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>เปิดรับสมัครรุ่นที่ 8 • เนื้อหาปรับปรุงใหม่ล่าสุด 2025/2026</span>
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 max-w-4xl mx-auto leading-[1.18] sm:leading-[1.15]">
+        สร้างเว็บ & พัฒนา <span class="underline decoration-zinc-300 decoration-wavy underline-offset-8">AI Application</span> จากศูนย์ สู่มืออาชีพใน 8 สัปดาห์
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-6 text-lg sm:text-xl text-zinc-600 max-w-2xl mx-auto font-normal leading-relaxed">
+        คอร์สเดียวที่รวม <strong class="text-zinc-900 font-semibold">Full-Stack Web Development</strong> และ <strong class="text-zinc-900 font-semibold">Generative AI</strong> เข้าด้วยกัน เรียนผ่านการสร้าง 6 โปรเจกต์จริง พร้อมระบบโค้ชชิ่งแบบ 1-on-1 และตรวจโค้ดส่วนตัว
+      </p>
+
+      <!-- Primary CTA Buttons -->
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button data-open-enroll class="btn btn-primary text-base py-3.5 px-8 w-full sm:w-auto shadow-lg hover:shadow-xl">
+          <span>สมัครเรียนตอนนี้ (รับสิทธิ์ Early Bird)</span>
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+        <button data-open-preview class="btn btn-secondary text-base py-3.5 px-7 w-full sm:w-auto">
+          <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polygon></svg>
+          <span>ดูตัวอย่างบทเรียนฟรี (3 ตอน)</span>
+        </button>
+      </div>
+
+      <!-- Trust Metrics & Guarantee Badges -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-y-4 gap-x-8 text-sm text-zinc-500">
+        <div class="flex items-center gap-2">
+          <!-- Student Avatars Stack -->
+          <div class="flex -space-x-2 overflow-hidden">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar 1">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Avatar 2">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Avatar 3">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Avatar 4">
+          </div>
+          <span class="font-medium text-zinc-700">ผู้เรียนแล้วกว่า 3,500+ คน</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-zinc-700 font-medium">
+          <span class="text-amber-500">★ ★ ★ ★ ★</span>
+          <span>4.9 / 5.0 (1,480+ รีวิว)</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-zinc-700 font-medium">
+          <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          <span>รับประกันคืนเงิน 100% ใน 14 วัน</span>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           HERO INTERACTIVE PRODUCT SHOWCASE (Minimalist App Preview)
+           ========================================================================= -->
+      <div class="mt-14 max-w-5xl mx-auto">
+        <div class="rounded-2xl border border-zinc-200 bg-white p-2.5 sm:p-4 shadow-2xl shadow-zinc-200/60">
+          <!-- Top Window Controls & Tabs -->
+          <div class="flex flex-col sm:flex-row items-center justify-between pb-3 mb-3 border-b border-zinc-100 gap-3">
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <span class="w-3 h-3 rounded-full bg-zinc-200 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-zinc-200 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-zinc-200 inline-block"></span>
+              <span class="text-xs font-mono text-zinc-400 ml-2">knowva-classroom.app/course/fullstack-ai</span>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex bg-zinc-100 p-1 rounded-xl text-xs font-medium text-zinc-600 w-full sm:w-auto justify-center">
+              <button data-hero-tab="video" class="px-3.5 py-1.5 rounded-lg bg-white text-zinc-900 shadow-sm font-semibold transition-all">
+                📺 ห้องเรียนวิดีโอ 4K
+              </button>
+              <button data-hero-tab="code" class="px-3.5 py-1.5 rounded-lg text-zinc-500 hover:text-zinc-800 transition-all">
+                💻 โค้ดแล็บ & แบบฝึกหัด
+              </button>
+              <button data-hero-tab="roadmap" class="px-3.5 py-1.5 rounded-lg text-zinc-500 hover:text-zinc-800 transition-all">
+                📊 แดชบอร์ดติดตามผล
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen 1: Video Classroom Mockup -->
+          <div data-hero-screen="video" class="rounded-xl overflow-hidden border border-zinc-100 bg-zinc-950 text-white relative aspect-video flex flex-col justify-between p-4 sm:p-6">
+            <!-- Top bar in video -->
+            <div class="flex items-center justify-between text-xs sm:text-sm text-zinc-300">
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                <span>Module 5: Building AI RAG Agent with Next.js 15 & Gemini</span>
+              </span>
+              <span class="bg-zinc-800/80 px-2.5 py-1 rounded text-zinc-300 font-mono text-xs">Full HD 1080p</span>
+            </div>
+
+            <!-- Center Play Button with pulse -->
+            <div class="my-auto text-center cursor-pointer group" data-open-preview>
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/90 text-zinc-950 flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+              </div>
+              <p class="text-xs sm:text-sm text-zinc-300 mt-3 font-medium">คลิกเพื่อรับชมตัวอย่างการสอนฟรี 15 นาที</p>
+            </div>
+
+            <!-- Bottom Video Player Controls -->
+            <div class="space-y-2">
+              <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-emerald-500 h-full w-2/5"></div>
+              </div>
+              <div class="flex items-center justify-between text-xs text-zinc-400 font-mono">
+                <span>08:42 / 24:15</span>
+                <span class="flex items-center gap-3">
+                  <span>1.0x Speed</span>
+                  <span>CC: Thai / Eng</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 2: Code Lab Mockup -->
+          <div data-hero-screen="code" class="hidden rounded-xl overflow-hidden border border-zinc-100 bg-zinc-950 text-zinc-200 text-left p-4 sm:p-6 font-mono text-xs sm:text-sm aspect-video overflow-y-auto">
+            <div class="flex items-center justify-between pb-3 border-b border-zinc-800 text-xs text-zinc-400">
+              <span>app/api/generate-summary/route.ts</span>
+              <span class="text-emerald-400">TypeScript • Next.js 15</span>
+            </div>
+            <pre class="mt-4 leading-relaxed font-mono">
+<span class="text-purple-400">import</span> { GoogleGenAI } <span class="text-purple-400">from</span> <span class="text-emerald-300">'@google/genai'</span>;
+<span class="text-purple-400">import</span> { NextResponse } <span class="text-purple-400">from</span> <span class="text-emerald-300">'next/server'</span>;
+
+<span class="text-purple-400">export async function</span> <span class="text-blue-400">POST</span>(req: Request) {
+  <span class="text-purple-400">const</span> { documentText, prompt } = <span class="text-purple-400">await</span> req.json();
+  <span class="text-zinc-500">// Initialize Google Gemini Client</span>
+  <span class="text-purple-400">const</span> ai = <span class="text-purple-400">new</span> GoogleGenAI({});
+  
+  <span class="text-purple-400">const</span> response = <span class="text-purple-400">await</span> ai.models.generateContent({
+    model: <span class="text-emerald-300">'gemini-2.5-flash'</span>,
+    contents: [{ text: <span class="text-emerald-300">`Context: ${documentText}\nTask: ${prompt}`</span> }],
+  });
+
+  <span class="text-purple-400">return</span> NextResponse.json({ result: response.text });
+}</pre>
+          </div>
+
+          <!-- Screen 3: Roadmap Dashboard Mockup -->
+          <div data-hero-screen="roadmap" class="hidden rounded-xl border border-zinc-100 bg-zinc-50 text-left p-6 aspect-video flex flex-col justify-center">
+            <h3 class="text-base font-bold text-zinc-900 mb-1">สถานะการเรียนของคุณ (Learning Progress)</h3>
+            <p class="text-xs text-zinc-500 mb-5">ความคืบหน้ารายสัปดาห์ • ตรวจการบ้านแล้ว 5/6 โปรเจกต์</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="bg-white p-4 rounded-xl border border-zinc-200">
+                <span class="text-xs text-zinc-400 font-medium">โปรเจกต์ที่ส่งแล้ว</span>
+                <p class="text-2xl font-bold text-zinc-900 mt-1">5 <span class="text-xs text-zinc-400 font-normal">/ 6 ชิ้น</span></p>
+                <div class="w-full bg-zinc-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                  <div class="bg-emerald-500 h-full w-[83%]"></div>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-zinc-200">
+                <span class="text-xs text-zinc-400 font-medium">คะแนนโค้ดรีวิวเฉลี่ย</span>
+                <p class="text-2xl font-bold text-emerald-600 mt-1">98.5%</p>
+                <span class="text-[11px] text-zinc-400">เกณฑ์ยอดเยี่ยม (A+)</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-zinc-200">
+                <span class="text-xs text-zinc-400 font-medium">สิทธิ์ 1-on-1 Coaching</span>
+                <p class="text-2xl font-bold text-zinc-900 mt-1">พร้อมจอง</p>
+                <span class="text-[11px] text-emerald-600 font-medium">จองเวลาตรวจพอร์ตได้เลย</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. SOCIAL PROOF & ALUMNI COMPANIES
+       ========================================================================= -->
+  <section class="py-12 border-y border-zinc-100 bg-zinc-50/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs sm:text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-6">
+        ศิษย์เก่าของเราทำงานในบริษัทเทคโนโลยีชั้นนำ & สตาร์ทอัพระดับสากล
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-70 grayscale hover:grayscale-0 transition-all">
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">Agoda</span>
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">LINE MAN Wongnai</span>
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">Shopee</span>
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">SCB TechX</span>
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">KBTG</span>
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">Bitkub</span>
+        <span class="font-bold text-lg sm:text-xl text-zinc-800 tracking-tight font-en">True Digital</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. PAIN POINTS VS SOLUTIONS (ทำไมต้องคอร์สนี้)
+       ========================================================================= -->
+  <section id="why-us" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+          Why Choose This Course
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 mt-4">
+          หยุดเสียเวลาลองผิดลองถูก แล้วก้าวกระโดดสู่นักพัฒนาตัวจริง
+        </h2>
+        <p class="text-zinc-600 mt-4 text-base sm:text-lg">
+          เปรียบเทียบข้อแตกต่างระหว่างการเรียนด้วยตนเองทั่วไป กับระบบการเรียนรู้แบบเข้มข้นที่ออกแบบมาเพื่อผลลัพธ์สูงสุด
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-900 font-bold mb-5">
+              01
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">Roadmap ชัดเจนตั้งแต่ Day 1</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              ไม่ต้องเดาว่าต้องเริ่มจากอะไร เราเรียงลำดับเนื้อหาตั้งแต่พื้นฐานจนถึงระดับสถาปัตยกรรมระบบขั้นสูง ไม่ตกหล่นเทรนด์ใหม่
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 text-xs font-medium text-emerald-600 flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            ประหยัดเวลาเรียนรู้กว่า 6 เดือน
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-900 font-bold mb-5">
+              02
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">ติดปัญหา มีคนช่วยตอบทันที</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              หมดปัญหาติดบั๊กแล้วต้องนั่งงมเป็นวันๆ มีทีม Teaching Assistants และผู้ช่วย AI คอยชี้แนะวิธีแก้แบบตรงจุดตลอด 24 ชม.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 text-xs font-medium text-emerald-600 flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            ตอบกลับภายใน 15-30 นาที
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-900 font-bold mb-5">
+              03
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">โปรเจกต์ระดับ Production</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              ไม่ใช่แค่ทำโปรเจกต์ Todo List ทั่วไป แต่คุณจะได้สร้าง Full-Stack AI SaaS, ระบบชำระเงินจริง และ Deploy ขึ้น Cloud จริง
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 text-xs font-medium text-emerald-600 flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            สร้าง Portfolio โดดเด่นกว่าใคร
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-900 font-bold mb-5">
+              04
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 mb-2">โค้ชชิ่งเตรียมสมัครงาน</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed">
+              ให้คำปรึกษาการเขียน Resume ภาษาอังกฤษ, จำลองการสัมภาษณ์งานด้านเทคนิค (Mock Interview) และแนะนำช่องทางรับงานฟรีแลนซ์
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 text-xs font-medium text-emerald-600 flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            94% ของผู้เรียนได้งานใน 3 เดือน
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. CURRICULUM BREAKDOWN (Native Accessible Accordions)
+       ========================================================================= -->
+  <section id="curriculum" class="py-20 bg-zinc-50 border-y border-zinc-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-xs font-semibold uppercase tracking-wider text-zinc-600 bg-white border border-zinc-200 px-3 py-1 rounded-full">
+          Curriculum Overview
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 mt-4">
+          เจาะลึก 6 โมดูลหลัก + 2 โบนัสพิเศษ
+        </h2>
+        <p class="text-zinc-600 mt-3 text-base">
+          รวมกว่า 60+ ชั่วโมง 120+ บทเรียน พร้อมไฟล์ตัวอย่างโค้ดและ Cheat Sheet ให้ดาวน์โหลดฟรี
+        </p>
+        <div class="mt-4">
+          <button id="expandAllCurriculum" class="text-xs font-semibold text-zinc-700 hover:text-zinc-950 underline cursor-pointer">
+            ขยายเนื้อหาทั้งหมด
+          </button>
+        </div>
+      </div>
+
+      <!-- Accordion List using native <details name="curriculum"> -->
+      <div class="space-y-4">
+        <!-- Module 1 -->
+        <details class="accordion-item" name="curriculum" open>
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-zinc-100 text-zinc-800 text-xs font-bold flex items-center justify-center font-mono">01</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">Modern Frontend Architecture & Semantic HTML5</span>
+                <span class="text-xs text-zinc-400 font-normal">14 บทเรียน • 6 ชั่วโมง • ออกแบบ Responsive UI ด้วย Tailwind CSS</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li>หลักการเขียน Semantic HTML5 เพื่อ SEO สูงสุด และมาตรฐาน Web Accessibility (a11y)</li>
+              <li>Tailwind CSS Deep Dive: การสร้าง Custom Design System, Dark Mode, และ Layout Grid/Flexbox ขั้นสูง</li>
+              <li>Modern CSS Features: Container Queries, View Transitions, Backdrop Filter และ Scroll Animations</li>
+              <li><strong>Workshop โปรเจกต์ 1:</strong> สร้าง Landing Page สำหรับ SaaS Product สไตล์ Linear & Apple</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Module 2 -->
+        <details class="accordion-item" name="curriculum">
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-zinc-100 text-zinc-800 text-xs font-bold flex items-center justify-center font-mono">02</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">Modern JavaScript (ES6+) & TypeScript Mastery</span>
+                <span class="text-xs text-zinc-400 font-normal">18 บทเรียน • 8 ชั่วโมง • พื้นฐาน Logic แน่น พัฒนาด้วยความมั่นใจ</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li>JavaScript Core: Event Loop, Closures, Prototypes, Callbacks และ Promises</li>
+              <li>Asynchronous Programming: Async/Await, Error Handling และ Fetch API อย่างเชี่ยวชาญ</li>
+              <li>TypeScript จากเริ่มต้น: Types, Interfaces, Generics, Type Narrowing และ Strict Type Safety</li>
+              <li><strong>Workshop โปรเจกต์ 2:</strong> เขียน Command-line Data Processor และ Interactive Quiz Engine ด้วย TypeScript</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Module 3 -->
+        <details class="accordion-item" name="curriculum">
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-zinc-100 text-zinc-800 text-xs font-bold flex items-center justify-center font-mono">03</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">React 19 & Next.js 15 Full-Stack Framework</span>
+                <span class="text-xs text-zinc-400 font-normal">24 บทเรียน • 12 ชั่วโมง • App Router, Server Components & Server Actions</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li>ทำความเข้าใจ React Component Architecture, Hooks (useState, useEffect, useMemo, custom hooks)</li>
+              <li>Next.js 15 App Router: Layouts, Nested Routes, Loading States และ Parallel Routes</li>
+              <li>React Server Components (RSC) vs Client Components: เมื่อไรควรใช้อะไร เพื่อ Performance สูงสุด</li>
+              <li>Server Actions: การส่ง Form และ Mutate ข้อมูลโดยไม่ต้องเขียน Boilerplate API</li>
+              <li><strong>Workshop โปรเจกต์ 3:</strong> สร้างระบบ Collaborative Task Management พร้อม Real-time Updates</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Module 4 -->
+        <details class="accordion-item" name="curriculum">
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-zinc-100 text-zinc-800 text-xs font-bold flex items-center justify-center font-mono">04</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">Database, Backend Architecture & Authentication</span>
+                <span class="text-xs text-zinc-400 font-normal">16 บทเรียน • 8 ชั่วโมง • PostgreSQL, Supabase, Prisma ORM</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li>การออกแบบฐานข้อมูล Relational Database (Tables, Foreign Keys, Indexes, Relations)</li>
+              <li>ใช้งาน PostgreSQL ร่วมกับ Prisma ORM และจัดการ Database Migrations</li>
+              <li>ระบบยืนยันตัวตน (Authentication & Authorization) ด้วย NextAuth / Supabase Auth (OAuth, Email/Password, JWT)</li>
+              <li>Row Level Security (RLS) เพื่อป้องกันข้อมูลรั่วไหลในระดับฐานข้อมูล</li>
+              <li><strong>Workshop โปรเจกต์ 4:</strong> ระบบ E-Commerce Storefront พร้อมตะกร้าสินค้า และ Database Sync</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Module 5 -->
+        <details class="accordion-item" name="curriculum">
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-emerald-500 text-zinc-950 text-xs font-bold flex items-center justify-center font-mono">05</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">Generative AI Engineering & LLM Application (Highlight)</span>
+                <span class="text-xs text-emerald-600 font-medium">20 บทเรียน • 10 ชั่วโมง • Gemini API, OpenAI, RAG & AI Agents</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li>Prompt Engineering ขั้นสูง และ Structured JSON Outputs จากโมเดล Gemini & GPT</li>
+              <li>Streaming Text Responses & Voice AI: สร้างประสบการณ์ Chatbot ที่ตอบสนองแบบ Real-time</li>
+              <li>การทำ RAG (Retrieval-Augmented Generation) ด้วย Vector Database (pgvector / Pinecone) เพื่อให้อ่านเอกสาร PDF ส่วนตัวได้</li>
+              <li>การสร้าง AI Agent แบบ Autonomous ที่สามารถเรียกใช้ Tools / Function Calling ในตัว</li>
+              <li><strong>Workshop โปรเจกต์ 5:</strong> สร้าง AI Copilot สำหรับวิเคราะห์เอกสารและตอบคำถามอัตโนมัติ</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Module 6 -->
+        <details class="accordion-item" name="curriculum">
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-zinc-100 text-zinc-800 text-xs font-bold flex items-center justify-center font-mono">06</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">Production Deployment, Security & DevOps</span>
+                <span class="text-xs text-zinc-400 font-normal">12 บทเรียน • 6 ชั่วโมง • Vercel, Docker, CI/CD, Custom Domain & SSL</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li>Deploy แอปพลิเคชันขึ้นสู่ Production ผ่าน Vercel และ Docker บน Cloud Server</li>
+              <li>การผูก Custom Domain, การตั้งค่า SSL Certificate และ Cloudflare CDN</li>
+              <li>Web Vitals (LCP, FID, CLS) และเทคนิคปรับจูน Speed Index ให้เว็บโหลดไวไม่ถึง 1 วินาที</li>
+              <li>ระบบชำระเงินจริงด้วย Stripe หรือ PromptPay Gateway พร้อม Webhook Listener</li>
+              <li><strong>Capstone Project 6:</strong> ปล่อยแอปพลิเคชันขึ้นสู่โลกออนไลน์จริง พร้อมรับผู้ใช้งานจริง</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Bonus Modules -->
+        <details class="accordion-item" name="curriculum">
+          <summary>
+            <div class="flex items-center gap-3 text-left">
+              <span class="w-7 h-7 rounded-lg bg-zinc-900 text-white text-xs font-bold flex items-center justify-center font-mono">+</span>
+              <div>
+                <span class="text-sm font-semibold text-zinc-900 block">โบนัสพิเศษ 2 รายการ: Career Coaching & Freelance Blueprint</span>
+                <span class="text-xs text-zinc-400 font-normal">มูลค่ารวม 15,000 บาท (มอบให้ฟรีสำหรับผู้ลงทะเบียนรุ่นนี้)</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            <ul class="space-y-2 text-sm text-zinc-600 pl-4 list-disc marker:text-zinc-300">
+              <li><strong>Bonus 1: Tech Resume & Portfolio Review:</strong> เช็คลิสต์ปรับพอร์ตให้โดนใจ Recruiter และเทคนิคตอบคำถามรอบ Technical Interview</li>
+              <li><strong>Bonus 2: Freelance Starter Kit:</strong> สัญญาจ้างงานมาตรฐาน, ใบเสนอราคา, กลยุทธ์การตั้งราคาโปรเจกต์ และการหาลูกค้าต่างประเทศผ่าน Upwork</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. HANDS-ON PROJECTS SHOWCASE
+       ========================================================================= -->
+  <section id="projects" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+          Real-World Capstone
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 mt-4">
+          โปรเจกต์จริงที่คุณจะได้สร้างและนำไปใส่ Portfolio
+        </h2>
+        <p class="text-zinc-600 mt-4 text-base sm:text-lg">
+          ไม่ใช่แค่งานตัวอย่างธรรมดา แต่เป็นซอฟต์แวร์ที่สามารถเปิดให้บริการและสร้างรายได้ได้จริงในชีวิตประจำวัน
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="card-clean flex flex-col justify-between overflow-hidden group">
+          <div>
+            <div class="w-full h-44 rounded-xl bg-zinc-100 mb-5 overflow-hidden border border-zinc-200 relative flex items-center justify-center">
+              <div class="text-center p-4">
+                <span class="px-2.5 py-1 rounded bg-white text-zinc-900 font-mono text-xs shadow-sm font-bold">AI SaaS App</span>
+                <p class="text-xs text-zinc-500 mt-2">Next.js 15 • Gemini API • Stripe Subscriptions</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 group-hover:text-emerald-600 transition-colors">
+              AI Content Creator & Marketing SaaS
+            </h3>
+            <p class="text-sm text-zinc-600 mt-2 leading-relaxed">
+              เว็บแอปพลิเคชันช่วยนักการตลาดเขียนบทความและคิดคอนเทนต์ด้วย AI พร้อมระบบจำกัดโควต้าผู้ใช้งานและการตัดบัตรรายเดือนอัตโนมัติ
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Next.js</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">TypeScript</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Google Gemini</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Stripe</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card-clean flex flex-col justify-between overflow-hidden group">
+          <div>
+            <div class="w-full h-44 rounded-xl bg-zinc-100 mb-5 overflow-hidden border border-zinc-200 relative flex items-center justify-center">
+              <div class="text-center p-4">
+                <span class="px-2.5 py-1 rounded bg-white text-zinc-900 font-mono text-xs shadow-sm font-bold">Real-time Collab</span>
+                <p class="text-xs text-zinc-500 mt-2">React 19 • Supabase Realtime • Drag & Drop</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 group-hover:text-emerald-600 transition-colors">
+              Collaborative Project & Kanban Board
+            </h3>
+            <p class="text-sm text-zinc-600 mt-2 leading-relaxed">
+              ระบบจัดการโปรเจกต์แบบ Trello ที่สมาชิกในทีมสามารถลากการ์ด อัปเดตงาน และแชตคุยกันได้แบบ Real-time ข้อมูลซิงค์ทันทีโดยไม่ต้องรีเฟรช
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Supabase</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">WebSockets</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Tailwind</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">RLS</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card-clean flex flex-col justify-between overflow-hidden group">
+          <div>
+            <div class="w-full h-44 rounded-xl bg-zinc-100 mb-5 overflow-hidden border border-zinc-200 relative flex items-center justify-center">
+              <div class="text-center p-4">
+                <span class="px-2.5 py-1 rounded bg-white text-zinc-900 font-mono text-xs shadow-sm font-bold">Full-Stack Commerce</span>
+                <p class="text-xs text-zinc-500 mt-2">PostgreSQL • Prisma • PromptPay QR</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold text-zinc-950 group-hover:text-emerald-600 transition-colors">
+              Modern Headless E-Commerce Platform
+            </h3>
+            <p class="text-sm text-zinc-600 mt-2 leading-relaxed">
+              ร้านค้าออนไลน์ประสิทธิภาพสูง ค้นหาสินค้าได้รวดเร็ว มีระบบตะกร้าสินค้า ระบบคิดค่าส่ง และระบบสร้าง QR พร้อมเพย์เพื่อชำระเงินทันที
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">PostgreSQL</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Prisma</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">PromptPay</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 text-zinc-700">Vercel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. INSTRUCTOR PROFILE
+       ========================================================================= -->
+  <section id="instructor" class="py-20 bg-zinc-50 border-y border-zinc-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl border border-zinc-200 p-8 sm:p-12 shadow-sm flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border border-zinc-200 flex-shrink-0 shadow-md">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Instructor Profile" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+            ผู้สอนประจำหลักสูตร
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-zinc-950 mt-3">
+            คุณธนัท (Coach Tanat)
+          </h3>
+          <p class="text-sm font-medium text-zinc-500 mt-1">
+            Former Senior Full-Stack Tech Lead & Tech Speaker • ประสบการณ์พัฒนาระบบกว่า 10 ปี
+          </p>
+          <p class="text-zinc-600 text-sm sm:text-base mt-4 leading-relaxed">
+            "ผมเชื่อว่าการเขียนโปรแกรมไม่ใช่เรื่องของพรสวรรค์ แต่เป็นเรื่องของการมีระบบการเรียนรู้ที่ถูกต้องและการได้ลงมือทำจริง คอร์สนี้ผมกลั่นกรองเทคนิคและสถาปัตยกรรมที่ใช้จริงในบริษัทเทคโนโลยีชั้นนำมาถ่ายทอดแบบเข้าใจง่ายที่สุด เพื่อให้คุณสามารถนำไปต่อยอดได้จริง ไม่ใช่แค่จำไปสอบ"
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-zinc-500 font-medium">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              ดูแลนักเรียนแล้วกว่า 3,500+ คน
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              ที่ปรึกษาด้าน AI ให้กับ 15+ ธุรกิจ
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. STUDENT REVIEWS / TESTIMONIALS
+       ========================================================================= -->
+  <section id="reviews" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-3 py-1 rounded-full">
+          Wall of Love
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 mt-4">
+          เสียงตอบรับและความสำเร็จจากผู้เรียนจริง
+        </h2>
+        <p class="text-zinc-600 mt-4 text-base sm:text-lg">
+          อ่านเรื่องราวของคนที่เปลี่ยนสายงาน หรือเพิ่มรายได้จากการนำทักษะในคอร์สนี้ไปใช้จริง
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Review 1 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="text-amber-500 text-sm mb-3">★ ★ ★ ★ ★</div>
+            <p class="text-sm text-zinc-700 leading-relaxed italic">
+              "เดิมทีทำงานสายมาร์เก็ตติ้ง ไม่เคยเขียนโค้ดมาก่อนเลยครับ ตอนแรกกลัวว่าจะตามไม่ทัน แต่พี่ผู้สอนอธิบายตั้งแต่พื้นฐานแบบเห็นภาพชัดเจนมาก จนตอนนี้สามารถเปลี่ยนสายงานมาเป็น Junior Full-Stack Developer ได้สำเร็จภายใน 3 เดือนครับ ขอบคุณทีมงานมากๆ ครับ"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center gap-3">
+            <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Reviewer">
+            <div>
+              <h4 class="text-sm font-bold text-zinc-900">คุณกิตติศักดิ์ พ.</h4>
+              <p class="text-xs text-zinc-500">Junior Developer (ย้ายสายจาก Marketing)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="text-amber-500 text-sm mb-3">★ ★ ★ ★ ★</div>
+            <p class="text-sm text-zinc-700 leading-relaxed italic">
+              "คุ้มค่าเกินราคามากครับ โดยเฉพาะโมดูล AI และ Next.js 15 ที่เอาไปใช้กับงานจริงที่บริษัทได้ทันที ที่ชอบที่สุดคือระบบตรวจโค้ดที่คอมเมนต์ละเอียดมาก ชี้ให้เห็นถึง Best Practice และ Security ที่ไม่มีสอนในคลิปฟรีบนยูทูป"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center gap-3">
+            <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Reviewer">
+            <div>
+              <h4 class="text-sm font-bold text-zinc-900">คุณภาณุวัฒน์ ส.</h4>
+              <p class="text-xs text-zinc-500">Software Engineer (อัปเงินเดือน +70%)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="card-clean flex flex-col justify-between">
+          <div>
+            <div class="text-amber-500 text-sm mb-3">★ ★ ★ ★ ★</div>
+            <p class="text-sm text-zinc-700 leading-relaxed italic">
+              "โปรเจกต์ในคอร์สมีคุณภาพสูงมาก เอาไปใส่ใน Portfolio แล้วยื่นเสนอลูกค้าต่างประเทศใน Upwork ได้รับงานสร้างเว็บแรกมาในราคา 45,000 บาท คืนทุนค่าคอร์สตั้งแต่โปรเจกต์แรกเลยค่ะ แนะนำสำหรับทุกคนที่อยากมีรายได้เสริม!"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-zinc-100 flex items-center gap-3">
+            <img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Reviewer">
+            <div>
+              <h4 class="text-sm font-bold text-zinc-900">คุณศิรินทิพย์ ว.</h4>
+              <p class="text-xs text-zinc-500">Freelance Web Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. PRICING & PACKAGES (3 Transparent Tiers)
+       ========================================================================= -->
+  <section id="pricing" class="py-20 bg-zinc-50 border-y border-zinc-100 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+          Transparent Pricing
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 mt-4">
+          เลือกระดับการเรียนรู้ที่เหมาะกับคุณ
+        </h2>
+        <p class="text-zinc-600 mt-4 text-base sm:text-lg">
+          จ่ายครั้งเดียว เข้าถึงเนื้อหาและโปรเจกต์ตลอดชีพ รองรับการผ่อน 0% สูงสุด 10 เดือน
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <!-- Tier 1: Self-Paced -->
+        <div class="card-clean flex flex-col justify-between relative bg-white">
+          <div>
+            <h3 class="text-xl font-bold text-zinc-950">Self-Paced</h3>
+            <p class="text-xs text-zinc-500 mt-1">เหมาะสำหรับผู้ที่ต้องการเรียนรู้ด้วยตัวเองตามเวลาสะดวก</p>
+            
+            <div class="my-6">
+              <span class="text-xs text-zinc-400 line-through">ปกติ ฿6,900</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="text-4xl font-extrabold text-zinc-950 font-en">฿3,990</span>
+                <span class="text-xs text-zinc-500 font-medium">/ ตลอดชีพ</span>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-sm text-zinc-600 border-t border-zinc-100 pt-6">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>เข้าถึงวิดีโอ 120+ บทเรียน ตลอดชีพ</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>Source Code ครบทั้ง 6 โปรเจกต์</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>อัปเดตเนื้อหาใหม่ฟรีตลอด 1 ปี</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-zinc-400">
+                <svg class="w-4 h-4 text-zinc-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="line-through">Live Coaching ทุกสัปดาห์</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-zinc-400">
+                <svg class="w-4 h-4 text-zinc-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="line-through">ระบบตรวจโค้ดส่วนบุคคล</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <button data-open-enroll data-plan="basic" class="btn btn-secondary w-full justify-center">
+              เลือกแพ็กเกจนี้
+            </button>
+          </div>
+        </div>
+
+        <!-- Tier 2: Pro Cohort (Recommended) -->
+        <div class="card-clean flex flex-col justify-between relative bg-white border-2 border-zinc-950 shadow-xl scale-105 z-10">
+          <!-- Most Popular Badge -->
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-zinc-950 text-white text-xs font-bold py-1 px-4 rounded-full uppercase tracking-wider font-en">
+            ★ Most Popular • แนะนำ
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-zinc-950">Pro Cohort</h3>
+            <p class="text-xs text-zinc-500 mt-1">รุ่นยอดนิยม มีระบบดูแล ตรวจโค้ด และกลุ่มปิด</p>
+            
+            <div class="my-6">
+              <span class="text-xs text-zinc-400 line-through">ปกติ ฿12,900</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="text-4xl font-extrabold text-zinc-950 font-en">฿6,990</span>
+                <span class="text-xs text-zinc-500 font-medium">/ ตลอดชีพ</span>
+              </div>
+              <span class="text-xs text-emerald-600 font-medium mt-1 block">หรือผ่อน 0% เพียง ฿699/เดือน</span>
+            </div>
+
+            <ul class="space-y-3 text-sm text-zinc-700 border-t border-zinc-100 pt-6">
+              <li class="flex items-start gap-2.5 font-medium">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>ทุกอย่างที่มีในแพ็กเกจ Self-Paced</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>Live Q&A และโค้ชชิ่งสดทุกสัปดาห์ (8 สัปดาห์)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>สิทธิ์เข้า Private Discord VIP แชตถามตอบ 24 ชม.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>ระบบตรวจโค้ด & รีวิวการบ้านรายบุคคล (Code Review)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>ใบประกาศนียบัตรรับรอง (Verified Certificate)</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <button data-open-enroll data-plan="pro" class="btn btn-primary w-full justify-center py-3">
+              สมัครแพ็กเกจ Pro Cohort &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Tier 3: VIP Mentorship -->
+        <div class="card-clean flex flex-col justify-between relative bg-white">
+          <div>
+            <h3 class="text-xl font-bold text-zinc-950">VIP Mentorship</h3>
+            <p class="text-xs text-zinc-500 mt-1">รับจำกัดเพียง 10 ท่านต่อรุ่นเพื่อการดูแลอย่างใกล้ชิด</p>
+            
+            <div class="my-6">
+              <span class="text-xs text-zinc-400 line-through">ปกติ ฿25,000</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="text-4xl font-extrabold text-zinc-950 font-en">฿14,900</span>
+                <span class="text-xs text-zinc-500 font-medium">/ ตลอดชีพ</span>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-sm text-zinc-600 border-t border-zinc-100 pt-6">
+              <li class="flex items-start gap-2.5 font-medium">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>ทุกอย่างที่มีในแพ็กเกจ Pro Cohort</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>1-on-1 Private Coaching ตัวต่อตัว 4 ครั้ง (ครั้งละ 1 ชม.)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>ตรวจและปรับแต่ง Resume & Portfolio แบบละเอียดยิบ</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>จำลองการสัมภาษณ์งานจริง (Mock Interview)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span>การันตีการแนะนำและส่งต่อประวัติให้บริษัทพาร์ทเนอร์</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <button data-open-enroll data-plan="vip" class="btn btn-secondary w-full justify-center">
+              สมัครแพ็กเกจ VIP
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Money-back guarantee banner -->
+      <div class="mt-16 max-w-2xl mx-auto p-4 rounded-xl border border-zinc-200 bg-white flex items-center justify-center gap-3 text-xs sm:text-sm text-zinc-600 text-center">
+        <svg class="w-6 h-6 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <span><strong>100% Risk-Free:</strong> หากเริ่มเรียนแล้วรู้สึกว่าไม่เหมาะกับคุณ ขอเงินคืนได้เต็มจำนวน 100% ภายใน 14 วัน ไม่มีเงื่อนไขผูกมัด</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. FAQ SECTION (Native Mutually Exclusive Accordions)
+       ========================================================================= -->
+  <section id="faq" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-xs font-semibold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-3 py-1 rounded-full">
+          FAQ
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 mt-4">
+          คำถามที่พบบ่อย (Frequently Asked Questions)
+        </h2>
+        <p class="text-zinc-600 mt-3 text-base">
+          หากมีข้อสงสัยเพิ่มเติม สามารถสอบถามทีมงานผ่าน LINE Official ได้ตลอดเวลา
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <!-- FAQ 1 -->
+        <details class="accordion-item" name="faq-group" open>
+          <summary>
+            <span>ไม่มีพื้นฐานการเขียนโปรแกรมมาก่อนเลย สามารถเรียนรู้เรื่องไหม?</span>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            เรียนได้แน่นอนครับ หลักสูตรนี้ออกแบบมาเพื่อผู้เริ่มต้นที่ต้องการปูพื้นฐานอย่างเป็นระบบ เริ่มสอนตั้งแต่แนวคิดการทำงานของอินเทอร์เน็ต, HTML/CSS, ตรรกะโปรแกรมมิ่ง จนถึงการเขียนโค้ดขั้นสูง อีกทั้งยังมีทีมช่วยตอบคำถามตลอดการเรียน
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="accordion-item" name="faq-group">
+          <summary>
+            <span>ถ้าติดงานประจำ สามารถดูย้อนหลังได้ไหม และมีวันหมดอายุหรือไม่?</span>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            ดูย้อนหลังได้ตลอดชีพครับ (Lifetime Access) ไม่มีวันหมดอายุ คุณสามารถจัดสรรเวลาเรียนได้ตามความสะดวกของตนเอง และยังได้รับสิทธิ์เข้าถึงเนื้อหาที่อัปเดตใหม่ในอนาคตฟรี
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="accordion-item" name="faq-group">
+          <summary>
+            <span>เวลาติดปัญหาหรือเขียนโค้ดแล้วเกิดบั๊ก มีใครช่วยตอบคำถามไหม?</span>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            เรามีห้อง Discord พิเศษสำหรับนักเรียนในคอร์ส โดยจะมีทีมงาน Teaching Assistants (TA) และคุณผู้สอนคอยสแตนด์บายช่วยเหลือ คุณสามารถแปะโค้ดหรือภาพหน้าจอเพื่อรับคำปรึกษาได้ทุกวัน
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="accordion-item" name="faq-group">
+          <summary>
+            <span>เมื่อเรียนจบหลักสูตร มีใบประกาศนียบัตร (Certificate) ให้หรือไม่?</span>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            มีครับ ผู้เรียนที่ส่งงานและผ่านเกณฑ์การประเมิน Capstone Project จะได้รับ Verified Digital Certificate ที่สามารถนำไปแนบใน LinkedIn หรือยื่นสมัครงานกับบริษัทต่างๆ ได้ทันที
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="accordion-item" name="faq-group">
+          <summary>
+            <span>สามารถขอใบกำกับภาษีเต็มรูปสำหรับเบิกบริษัทได้ไหม?</span>
+            <svg class="w-5 h-5 text-zinc-400 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="accordion-content">
+            สามารถออกใบกำกับภาษีเต็มรูป (e-Tax Invoice) ได้อย่างถูกต้องตามกฎหมายครับ ในขั้นตอนการชำระเงินสามารถเลือกขอใบเสร็จ/ใบกำกับภาษีในนามบริษัทได้เลยครับ
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. FINAL URGENCY CTA BANNER
+       ========================================================================= -->
+  <section class="py-20 bg-zinc-950 text-white relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-zinc-800 text-emerald-400 border border-zinc-700">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        รับสิทธิ์ด่วนก่อนปรับราคา
+      </span>
+
+      <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mt-6 leading-tight">
+        พร้อมเปลี่ยนอนาคตสู่นักพัฒนาซอฟต์แวร์มืออาชีพแล้วหรือยัง?
+      </h2>
+
+      <p class="mt-4 text-base sm:text-lg text-zinc-400 max-w-xl mx-auto">
+        สมัครเรียนวันนี้รับส่วนลด Early Bird สูงสุด 40% และโบนัสตรวจพอร์ตโฟลิโอฟรีทันที
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button data-open-enroll class="btn bg-white text-zinc-950 hover:bg-zinc-100 text-base py-3.5 px-8 font-semibold w-full sm:w-auto">
+          สมัครเรียนรุ่นที่ 8 ทันที &rarr;
+        </button>
+        <button data-open-preview class="btn border border-zinc-700 text-white hover:bg-zinc-900 text-base py-3.5 px-6 w-full sm:w-auto">
+          ทดลองเรียนฟรีก่อนตัดสินใจ
+        </button>
+      </div>
+
+      <p class="text-xs text-zinc-500 mt-6">
+        🔒 ชำระเงินปลอดภัยด้วยระบบเข้ารหัส 256-bit SSL • รับประกันคืนเงิน 14 วัน
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-zinc-100 py-12 text-sm text-zinc-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg bg-zinc-950 text-white flex items-center justify-center font-bold text-sm">
+          K
+        </div>
+        <span class="font-bold text-zinc-900 font-en">KNOWVA ACADEMY</span>
+        <span class="text-xs text-zinc-400 ml-2">© 2025-2026 สงวนลิขสิทธิ์ทุกประการ</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs font-medium">
+        <a href="#why-us" class="hover:text-zinc-900 transition-colors">เกี่ยวกับคอร์ส</a>
+        <a href="#curriculum" class="hover:text-zinc-900 transition-colors">หลักสูตร</a>
+        <a href="#pricing" class="hover:text-zinc-900 transition-colors">ราคา</a>
+        <a href="#" class="hover:text-zinc-900 transition-colors">นโยบายความเป็นส่วนตัว</a>
+        <a href="#" class="hover:text-zinc-900 transition-colors">เงื่อนไขการใช้บริการ</a>
+      </div>
+
+      <div class="flex items-center gap-4 text-zinc-600 text-xs">
+        <span>LINE: <strong class="text-zinc-900">@knowva</strong></span>
+        <span>Email: <strong class="text-zinc-900">hello@knowva.academy</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       14. ENROLLMENT & CHECKOUT MODAL (<dialog closedby="any">)
+       Complies strictly with Modern Web Guidance
+       ========================================================================= -->
+  <dialog id="enrollModal" closedby="any" class="custom-modal" aria-labelledby="enrollModalTitle">
+    <!-- View 1: Form & Checkout -->
+    <div id="checkoutFormView">
+      <div class="modal-header">
+        <div>
+          <h3 id="enrollModalTitle" class="text-lg font-bold text-zinc-950">สมัครเรียนออนไลน์</h3>
+          <p class="text-xs text-zinc-500 mt-0.5">กรอกข้อมูลและเลือกช่องทางชำระเงิน</p>
+        </div>
+        <button data-dialog-close aria-label="Close" class="text-zinc-400 hover:text-zinc-700 p-1 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <form id="enrollForm">
+        <div class="modal-body space-y-4">
+          <!-- Step 1: Package Selection -->
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2">1. เลือกแพ็กเกจที่คุณต้องการ</label>
+            <div class="space-y-2">
+              <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:border-zinc-400 cursor-pointer transition-all has-[:checked]:border-zinc-950 has-[:checked]:bg-zinc-50">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="packageSelect" value="basic" class="text-zinc-950 focus:ring-zinc-950">
+                  <div>
+                    <span class="text-sm font-bold text-zinc-900 block">Self-Paced</span>
+                    <span class="text-xs text-zinc-500">เรียนรู้ด้วยตนเองตลอดชีพ</span>
+                  </div>
+                </div>
+                <span class="text-sm font-extrabold text-zinc-900 font-en">฿3,990</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:border-zinc-400 cursor-pointer transition-all has-[:checked]:border-zinc-950 has-[:checked]:bg-zinc-50">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="packageSelect" value="pro" checked class="text-zinc-950 focus:ring-zinc-950">
+                  <div>
+                    <span class="text-sm font-bold text-zinc-900 flex items-center gap-1.5">
+                      Pro Cohort
+                      <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">แนะนำ</span>
+                    </span>
+                    <span class="text-xs text-zinc-500">Live Coaching + ตรวจโค้ด + สิทธิ์ Discord</span>
+                  </div>
+                </div>
+                <span class="text-sm font-extrabold text-zinc-900 font-en">฿6,990</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:border-zinc-400 cursor-pointer transition-all has-[:checked]:border-zinc-950 has-[:checked]:bg-zinc-50">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="packageSelect" value="vip" class="text-zinc-950 focus:ring-zinc-950">
+                  <div>
+                    <span class="text-sm font-bold text-zinc-900 block">VIP Mentorship</span>
+                    <span class="text-xs text-zinc-500">1-on-1 โค้ชชิ่งเดี่ยว 4 ครั้ง</span>
+                  </div>
+                </div>
+                <span class="text-sm font-extrabold text-zinc-900 font-en">฿14,900</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Student Information -->
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2">2. ข้อมูลผู้เรียน</label>
+            <div class="space-y-2.5">
+              <input id="studentNameInput" required type="text" placeholder="ชื่อ - นามสกุล" class="input-field">
+              <input id="studentEmailInput" required type="email" placeholder="อีเมลสำหรับรับบัญชีเข้าเรียน" class="input-field">
+              <input id="studentPhoneInput" required type="tel" placeholder="เบอร์โทรศัพท์มือถือ" class="input-field">
+            </div>
+          </div>
+
+          <!-- Step 3: Coupon Discount -->
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2">3. โค้ดส่วนลดพิเศษ</label>
+            <div class="flex gap-2">
+              <input id="couponCodeInput" type="text" placeholder="พิมพ์ EARLYBIRD หรือ DEV1000" class="input-field uppercase font-mono">
+              <button id="applyCouponBtn" type="button" class="btn btn-secondary px-4 text-xs flex-shrink-0">
+                ใช้โค้ด
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-400 mt-1">💡 ทดลองกรอกโค้ด: <code class="text-zinc-800 font-bold">EARLYBIRD</code> เพื่อรับส่วนลดเพิ่ม ฿500</p>
+          </div>
+
+          <!-- Step 4: Payment Method Selection -->
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2">4. เลือกวิธีชำระเงิน</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-zinc-200 cursor-pointer has-[:checked]:border-zinc-950 has-[:checked]:bg-zinc-50 text-xs font-medium">
+                <input type="radio" name="paymentMethod" value="promptpay" checked class="text-zinc-950">
+                <span>QR พร้อมเพย์ (สแกนจ่าย)</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-zinc-200 cursor-pointer has-[:checked]:border-zinc-950 has-[:checked]:bg-zinc-50 text-xs font-medium">
+                <input type="radio" name="paymentMethod" value="card" class="text-zinc-950">
+                <span>บัตรเครดิต / เดบิต</span>
+              </label>
+            </div>
+
+            <!-- PromptPay Mockup -->
+            <div id="promptPayBox" class="mt-3 p-4 bg-zinc-50 rounded-xl border border-zinc-200 text-center">
+              <div class="w-32 h-32 bg-white p-2 border border-zinc-200 rounded-lg mx-auto shadow-sm flex items-center justify-center">
+                <!-- SVG QR Code Placeholder -->
+                <svg class="w-full h-full text-zinc-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="8" height="8" rx="1"></rect>
+                  <rect x="14" y="2" width="8" height="8" rx="1"></rect>
+                  <rect x="2" y="14" width="8" height="8" rx="1"></rect>
+                  <rect x="15" y="15" width="2" height="2"></rect>
+                  <rect x="18" y="18" width="2" height="2"></rect>
+                  <rect x="14" y="19" width="2" height="2"></rect>
+                  <rect x="19" y="14" width="2" height="2"></rect>
+                </svg>
+              </div>
+              <p class="text-xs text-zinc-600 mt-2 font-medium">สแกนเพื่อชำระเงินผ่าน Mobile Banking ทุกธนาคาร</p>
+              <span class="text-[11px] text-zinc-400">ระบบจะตรวจสอบยอดเงินอัตโนมัติทันที</span>
+            </div>
+
+            <!-- Credit Card Mockup (Hidden by default) -->
+            <div id="creditCardBox" class="hidden mt-3 space-y-2 p-4 bg-zinc-50 rounded-xl border border-zinc-200">
+              <input type="text" placeholder="หมายเลขบัตร 16 หลัก" class="input-field text-xs">
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" placeholder="MM/YY" class="input-field text-xs">
+                <input type="text" placeholder="CVC" class="input-field text-xs">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary & Submit -->
+        <div class="modal-footer">
+          <div class="space-y-1 text-xs mb-4">
+            <div class="flex justify-between text-zinc-500">
+              <span>แพ็กเกจที่เลือก:</span>
+              <span id="checkoutPlanName" class="font-medium text-zinc-800">Pro Cohort</span>
+            </div>
+            <div class="flex justify-between text-zinc-500">
+              <span>ราคาปกติ:</span>
+              <span id="checkoutSubtotal" class="font-mono">฿6,990</span>
+            </div>
+            <div id="checkoutDiscountRow" class="hidden flex justify-between text-emerald-600 font-semibold">
+              <span>ส่วนลดคูปอง:</span>
+              <span id="checkoutDiscount" class="font-mono">- ฿500</span>
+            </div>
+            <div class="flex justify-between text-base font-bold text-zinc-950 pt-2 border-t border-zinc-200">
+              <span>ยอดรวมชำระสุทธิ:</span>
+              <span id="checkoutTotal" class="font-mono text-emerald-600 text-lg">฿6,990</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full justify-center py-3 text-sm">
+            ยืนยันการสมัครและชำระเงิน &rarr;
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- View 2: Checkout Success View -->
+    <div id="checkoutSuccessView" class="hidden p-8 text-center">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+      </div>
+      <h3 class="text-2xl font-bold text-zinc-950">สมัครเรียนสำเร็จแล้ว!</h3>
+      <p class="text-zinc-600 text-sm mt-2">
+        ยินดีต้อนรับคุณ <strong id="confirmStudentName" class="text-zinc-900">ผู้เรียน</strong> สู่ครอบครัว KNOWVA Academy
+      </p>
+
+      <div class="my-6 p-4 rounded-xl bg-zinc-50 border border-zinc-200 text-left text-xs space-y-1.5">
+        <div class="flex justify-between text-zinc-500">
+          <span>หลักสูตร:</span>
+          <span class="font-medium text-zinc-900">Full-Stack & AI Builder</span>
+        </div>
+        <div class="flex justify-between text-zinc-500">
+          <span>แพ็กเกจ:</span>
+          <span id="confirmPlanName" class="font-medium text-zinc-900">Pro Cohort</span>
+        </div>
+        <div class="flex justify-between text-zinc-500">
+          <span>จัดส่งคู่มือและลิงก์เข้าเรียนไปยัง:</span>
+          <span id="confirmStudentEmail" class="font-mono text-zinc-900">user@email.com</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-zinc-500 mb-6">
+        ทีมงานได้จัดส่งรายละเอียดการเข้าสู่ระบบและลิงก์กลุ่ม Discord VIP ไปที่อีเมลของคุณเรียบร้อยแล้วครับ
+      </p>
+
+      <button data-dialog-close class="btn btn-primary w-full justify-center">
+        เข้าสู่แดชบอร์ดบทเรียน
+      </button>
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       15. FREE SAMPLE PREVIEW VIDEO MODAL (<dialog closedby="any">)
+       ========================================================================= -->
+  <dialog id="previewModal" closedby="any" class="custom-modal max-w-4xl" aria-labelledby="previewModalTitle">
+    <div class="modal-header">
+      <div class="flex items-center gap-3">
+        <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+        </span>
+        <div>
+          <h3 id="previewModalTitle" class="text-base sm:text-lg font-bold text-zinc-950">ตัวอย่างบทเรียนฟรี (3 ตอนเต็ม)</h3>
+          <p class="text-xs text-zinc-500" id="previewModalSubtitle">ทดลองเรียนฟรีก่อนตัดสินใจ • ไม่มีค่าใช้จ่าย</p>
+        </div>
+      </div>
+      <button data-dialog-close aria-label="Close" class="text-zinc-400 hover:text-zinc-700 p-1.5 rounded-lg transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <div class="modal-body p-4 sm:p-6 space-y-4">
+      <!-- 1. Real Video Player Container (16:9 Aspect Ratio) -->
+      <div class="aspect-video bg-zinc-950 rounded-2xl overflow-hidden relative border border-zinc-800 shadow-lg">
+        <iframe id="previewVideoIframe" class="w-full h-full border-0" 
+          src="" 
+          title="ตัวอย่างบทเรียนฟรี" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Video Meta info -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3.5 bg-zinc-50 rounded-xl border border-zinc-200">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wide" id="previewEpisodeBadge">
+            กำลังเล่น EP.01
+          </span>
+          <h4 class="font-bold text-zinc-900 text-sm mt-1" id="previewVideoCurrentTitle">
+            EP.01: Full-Stack Web Development & AI Overview
+          </h4>
+          <p class="text-xs text-zinc-500 mt-0.5" id="previewVideoCurrentDesc">
+            ปูพื้นฐานการพัฒนา Full-Stack Web Application ผสานเทคโนโลยี AI และ Generative Tools ยุคใหม่
+          </p>
+        </div>
+        <div class="text-xs text-zinc-400 font-mono whitespace-nowrap" id="previewVideoCurrentDuration">
+          บทเรียนฟรี
+        </div>
+      </div>
+
+      <!-- 2. Episode Playlist Selector (3 ตอน) -->
+      <div>
+        <label class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2">เลือกตอนที่ต้องการดูตัวอย่าง (3 ตอนฟรี):</label>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="previewEpisodeSelector">
+          <!-- EP 1 -->
+          <button type="button" class="episode-btn active text-left p-3 rounded-xl border border-zinc-950 bg-zinc-50 transition-all flex flex-col justify-between" data-episode="1">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-[11px] font-bold text-emerald-600 flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                EP.01 (กำลังเล่น)
+              </span>
+              <span class="text-[10px] text-zinc-400 font-mono">ฟรี</span>
+            </div>
+            <p class="text-xs font-bold text-zinc-900 line-clamp-2">Full-Stack & AI Overview</p>
+          </button>
+
+          <!-- EP 2 -->
+          <button type="button" class="episode-btn text-left p-3 rounded-xl border border-zinc-200 hover:border-zinc-400 bg-white transition-all flex flex-col justify-between" data-episode="2">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-[11px] font-semibold text-zinc-500">EP.02 (ฟรี)</span>
+              <span class="text-[10px] text-zinc-400 font-mono">ฟรี</span>
+            </div>
+            <p class="text-xs font-bold text-zinc-900 line-clamp-2">Next.js E-Commerce & Admin UI</p>
+          </button>
+
+          <!-- EP 3 -->
+          <button type="button" class="episode-btn text-left p-3 rounded-xl border border-zinc-200 hover:border-zinc-400 bg-white transition-all flex flex-col justify-between" data-episode="3">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-[11px] font-semibold text-zinc-500">EP.03 (ฟรี)</span>
+              <span class="text-[10px] text-zinc-400 font-mono">ฟรี</span>
+            </div>
+            <p class="text-xs font-bold text-zinc-900 line-clamp-2">RESTful API & Integration</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Bottom Call To Action -->
+      <div class="p-4 bg-zinc-950 text-white rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div>
+          <p class="font-bold text-sm">ชอบเนื้อหาตัวอย่าง 3 ตอนนี้ไหม?</p>
+          <p class="text-zinc-400 mt-0.5">สมัครเรียนรุ่นที่ 8 วันนี้ รับส่วนลดพิเศษ Early Bird 40% พร้อมตรวจโค้ดส่วนตัว</p>
+        </div>
+        <button data-dialog-close data-open-enroll class="btn bg-white text-zinc-950 hover:bg-zinc-100 text-xs py-2 px-4 whitespace-nowrap flex-shrink-0 font-bold">
+          สมัครเรียนหลักสูตรเต็ม &rarr;
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       16. AUTHENTICATION MODAL (LOGIN & SIGN UP) (<dialog closedby="any">)
+       Modern Web Guidance Compliant with native <dialog>
+       ========================================================================= -->
+  <dialog id="authModal" closedby="any" class="custom-modal max-w-md" aria-labelledby="authModalTitle">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <div>
+        <h3 id="authModalTitle" class="text-lg font-bold text-zinc-950">เข้าสู่ระบบ / บัญชีผู้เรียน</h3>
+        <p class="text-xs text-zinc-500 mt-0.5" id="authModalSubtitle">เข้าถึงเนื้อหาคอร์สและสิทธิประโยชน์ของคุณ</p>
+      </div>
+      <button data-dialog-close aria-label="Close" class="text-zinc-400 hover:text-zinc-700 p-1.5 rounded-lg transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Contextual Alert: Shown when redirected from clicking "สมัครเรียน" -->
+    <div id="authNoticeBanner" class="hidden mx-6 mt-4 p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-2.5">
+      <div class="p-1 rounded-full bg-amber-200/60 text-amber-800 flex-shrink-0 mt-0.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      </div>
+      <div>
+        <p class="font-bold text-amber-950">ต้องเข้าสู่ระบบก่อนสมัครเรียน</p>
+        <p class="text-amber-800 mt-0.5 leading-relaxed">กรุณาเข้าสู่ระบบ (หรือสมัครสมาชิกใหม่) เพื่อเชื่อมโยงบัญชีและสิทธิการเข้าเรียนคอร์สนี้ครับ</p>
+      </div>
+    </div>
+
+    <!-- Tabs: Sign In / Sign Up -->
+    <div class="px-6 pt-4 border-b border-zinc-100 flex gap-6 text-sm">
+      <button id="tabSignInBtn" type="button" class="pb-2.5 font-bold text-zinc-950 border-b-2 border-zinc-950 transition-colors">
+        เข้าสู่ระบบ
+      </button>
+      <button id="tabSignUpBtn" type="button" class="pb-2.5 font-medium text-zinc-400 hover:text-zinc-700 border-b-2 border-transparent transition-colors">
+        สมัครสมาชิกใหม่
+      </button>
+    </div>
+
+    <div class="modal-body p-6 space-y-4">
+      <!-- 1. SIGN IN FORM -->
+      <form id="signInForm" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-700 mb-1.5" for="signInIdentifier">
+            อีเมล หรือ ชื่อผู้ใช้
+          </label>
+          <input id="signInIdentifier" required type="text" autocomplete="username" placeholder="เช่น user@example.com หรือ somchai" class="input-field text-sm">
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="block text-xs font-semibold text-zinc-700" for="signInPassword">
+              รหัสผ่าน
+            </label>
+            <a href="#" id="forgotPasswordLink" class="text-[11px] text-zinc-500 hover:text-zinc-950 hover:underline">ลืมรหัสผ่าน?</a>
+          </div>
+          <div class="relative">
+            <input id="signInPassword" required type="password" autocomplete="current-password" placeholder="กรอกรหัสผ่านของคุณ" class="input-field text-sm pr-10">
+            <button type="button" class="password-toggle-btn absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 focus:outline-none" data-target="signInPassword" aria-label="Toggle password visibility">
+              <svg class="w-4 h-4 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <svg class="w-4 h-4 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs pt-1">
+          <label class="flex items-center gap-2 cursor-pointer text-zinc-600 hover:text-zinc-900 select-none">
+            <input type="checkbox" id="rememberMe" checked class="rounded border-zinc-300 text-zinc-950 focus:ring-zinc-950">
+            <span>จดจำการเข้าสู่ระบบ</span>
+          </label>
+        </div>
+
+        <button type="submit" id="signInSubmitBtn" class="btn btn-primary w-full justify-center py-2.5 text-sm mt-2">
+          เข้าสู่ระบบ &rarr;
+        </button>
+
+        <!-- Fast Demo Account Button for instant testing -->
+        <button type="button" id="demoLoginBtn" class="w-full py-2 px-3 rounded-xl border border-dashed border-emerald-400 bg-emerald-50/70 hover:bg-emerald-100 text-emerald-900 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all">
+          <span>⚡ ทดลองคลิกเข้าสู่ระบบทันที (บัญชี Demo)</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="relative flex items-center justify-center py-2">
+          <div class="border-t border-zinc-200 w-full"></div>
+          <span class="bg-white px-3 text-[11px] text-zinc-400 uppercase tracking-wider whitespace-nowrap">หรือเข้าสู่ระบบด้วย</span>
+          <div class="border-t border-zinc-200 w-full"></div>
+        </div>
+
+        <!-- Social Login Options -->
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" data-social-login="Google" class="social-btn flex items-center justify-center gap-2 py-2 px-3 rounded-lg border border-zinc-200 hover:bg-zinc-50 text-xs font-medium text-zinc-700 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+            <span>Google</span>
+          </button>
+          <button type="button" data-social-login="LINE" class="social-btn flex items-center justify-center gap-2 py-2 px-3 rounded-lg border border-zinc-200 hover:bg-zinc-50 text-xs font-medium text-zinc-700 transition-colors">
+            <svg class="w-4 h-4 text-[#06C755]" fill="currentColor" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            <span>LINE</span>
+          </button>
+        </div>
+
+        <p class="text-center text-xs text-zinc-500 pt-1">
+          ยังไม่มีบัญชีใช่หรือไม่?
+          <button type="button" id="switchToSignUp" class="text-zinc-950 font-bold hover:underline ml-1">สมัครสมาชิกใหม่</button>
+        </p>
+      </form>
+
+      <!-- 2. SIGN UP FORM (REGISTER) -->
+      <form id="signUpForm" class="hidden space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-700 mb-1" for="signUpName">
+            ชื่อ - นามสกุล <span class="text-rose-500">*</span>
+          </label>
+          <input id="signUpName" required type="text" autocomplete="name" placeholder="เช่น กิตติพงษ์ สุขใจ" class="input-field text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-zinc-700 mb-1" for="signUpEmail">
+            อีเมล <span class="text-rose-500">*</span>
+          </label>
+          <input id="signUpEmail" required type="email" autocomplete="email" placeholder="เช่น kittipong@email.com" class="input-field text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-zinc-700 mb-1" for="signUpPhone">
+            เบอร์โทรศัพท์ <span class="text-rose-500">*</span>
+          </label>
+          <input id="signUpPhone" required type="tel" autocomplete="tel" placeholder="เช่น 081-234-5678" class="input-field text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-zinc-700 mb-1" for="signUpPassword">
+            กำหนดรหัสผ่าน <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <input id="signUpPassword" required type="password" autocomplete="new-password" minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร" class="input-field text-sm pr-10">
+            <button type="button" class="password-toggle-btn absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 focus:outline-none" data-target="signUpPassword" aria-label="Toggle password visibility">
+              <svg class="w-4 h-4 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <svg class="w-4 h-4 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-zinc-700 mb-1" for="signUpConfirmPassword">
+            ยืนยันรหัสผ่าน <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <input id="signUpConfirmPassword" required type="password" autocomplete="new-password" placeholder="กรอกรหัสผ่านอีกครั้ง" class="input-field text-sm pr-10">
+            <button type="button" class="password-toggle-btn absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 focus:outline-none" data-target="signUpConfirmPassword" aria-label="Toggle password visibility">
+              <svg class="w-4 h-4 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <svg class="w-4 h-4 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="pt-1">
+          <label class="flex items-start gap-2 cursor-pointer text-xs text-zinc-600 hover:text-zinc-900 select-none">
+            <input type="checkbox" id="termsCheck" required class="mt-0.5 rounded border-zinc-300 text-zinc-950 focus:ring-zinc-950">
+            <span>ฉันยอมรับ<a href="#" class="underline text-zinc-900 ml-1">ข้อกำหนดการให้บริการ</a> และ <a href="#" class="underline text-zinc-900">นโยบายความเป็นส่วนตัว</a></span>
+          </label>
+        </div>
+
+        <button type="submit" id="signUpSubmitBtn" class="btn btn-primary w-full justify-center py-2.5 text-sm mt-3">
+          สร้างบัญชีและเข้าสู่ระบบ &rarr;
+        </button>
+
+        <p class="text-center text-xs text-zinc-500 pt-1">
+          มีบัญชีอยู่แล้วใช่หรือไม่?
+          <button type="button" id="switchToSignIn" class="text-zinc-950 font-bold hover:underline ml-1">เข้าสู่ระบบ</button>
+        </p>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- JavaScript Main Interactive Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
