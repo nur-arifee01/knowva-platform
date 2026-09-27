@@ -306,3 +306,5 @@ WHERE email = 'your-email@example.com';
 
 ## 📄 ใบอนุญาต (License)
 ลิขสิทธิ์ © 2026 KNOWVA Academy. สงวนลิขสิทธิ์ทุกประการ
+#   k n o w v a - p l a t f o r m  
+ 
